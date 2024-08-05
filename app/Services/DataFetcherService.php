@@ -4,7 +4,7 @@ namespace App\Services;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
-class OpenAIService
+class DataFetcherService
     {
     protected $apiUrl;
     protected $apiKey;
@@ -23,7 +23,7 @@ class OpenAIService
         ])->post($this->apiUrl . '/completions', [
             'model' => 'text-davinci-003',
             'prompt' => 'Generate a list of users with names and emails.',
-            'max_tokens' => 1000,
+            'max_tokens' => 150,
         ]);
 
         if ($response->successful()) {
