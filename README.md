@@ -1,13 +1,15 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Framework: Laravel 11
+# Framework: Laravel 11
 
 ## INSTALL
 
 composer install
+
 php:  >= 8.2
 
 php artisan migrate
+
 php artisan migrate --env=testing
 
 
@@ -20,7 +22,7 @@ php artisan migrate --env=testing
 
 ### Execute apis routes
 
-En la raiz del proyecto existe un archivo llamado **insomnia_api.json** el cual se puede ejecutar en la aplicacion insomnia y traera la estructura para consultar cada api
+En la raiz del proyecto existe un archivo llamado **insomnia_api.json** el cual se puede ejecutar en la aplicacion insomnia y traera la estructura para consultar cada endpoint
 
 <img width="254" alt="Captura de pantalla 2024-08-06 a la(s) 4 54 24 p  m" src="https://github.com/user-attachments/assets/5f7ec4bf-bd8c-4ee7-ba73-28a0b4791abc">
 
