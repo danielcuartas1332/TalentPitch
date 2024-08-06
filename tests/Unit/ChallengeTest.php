@@ -9,6 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Database\QueryException;
 use PHPUnit\Framework\Attributes\Test;
 
+
 class ChallengeTest extends TestCase
 {
     use RefreshDatabase;
