@@ -25,21 +25,23 @@ class LoadUsers extends Command
         try {
             $usersData = $this->dataFetcherService->fetchUsers();
 
-            foreach ($usersData as $userData) {
-                User::updateOrCreate(
-                    ['email' => $userData['email']], // Uniqueness check
-                    [
-                        'name' => $userData['name'],
-                        'image_path' => $userData['image_path'] ?? null,
-                    ]
-                );
-            }
+            if (!empty($usersData)) {
+                foreach ($usersData as $userData) {
+                    User::updateOrCreate(
+                        ['email' => $userData['email']], // Uniqueness check
+                        [
+                            'name' => $userData['name'],
+                            'image_path' => $userData['image_path'] ?? null,
+                        ]
+                    );
+                }
 
-            $this->info('Users loaded successfully.');
+                $this->info('Usuarios cargados correctamente.');
+            } else {
+                $this->warn('No se obtuvieron usuarios de la API.');
+            }
         } catch (\Exception $e) {
-            $this->error('Failed to load users: ' . $e->getMessage());
-            // Log additional error details if needed
-            Log::error('Failed to load users', ['exception' => $e]);
+            $this->error('Error al cargar usuarios: ' . $e->getMessage());
         }
     }
 }

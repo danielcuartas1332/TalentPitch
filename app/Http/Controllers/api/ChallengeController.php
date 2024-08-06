@@ -25,19 +25,23 @@ class ChallengeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'difficulty' => 'required|integer|between:1,5',
+            'user_id' => 'required|integer|exists:users,id',
         ]);
 
-        $challenge = Challenge::create($request->all());
+        $challenge = Challenge::create($request->only(['title', 'description', 'difficulty', 'user_id']));
         return response()->json($challenge, 201);
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'nullable|string|max:255',
-            'email' => 'nullable|string|email|max:255|unique:users,email,' . $id,
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'difficulty' => 'required|integer|between:1,5',
+            'user_id' => 'required|integer|exists:users,id',
         ]);
 
         $challenge = Challenge::findOrFail($id);
