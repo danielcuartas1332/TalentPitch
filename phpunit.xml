@@ -18,7 +18,7 @@
     </source>
     <php>
         <env name="APP_ENV" value="testing"/>
-        <env name="APP_KEY" value="base64:sbNvQyz+nP/7+a39xmPQ5a+Lylq0BjTq0XXLndEgwF0="/>
+        
         <env name="DB_CONNECTION" value="mysql"/>
         <env name="DB_DATABASE" value="testing_talentpitch"/>
         <env name="DB_USERNAME" value="root"/>
