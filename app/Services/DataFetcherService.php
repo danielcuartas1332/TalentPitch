@@ -11,16 +11,26 @@ class DataFetcherService
     protected $apiUrl;
     protected $apiKey;
 
+    /**
+     * Trae la llave para conectar la api GTP
+     */
     public function __construct()
     {
-        $this->apiUrl = env('EXTERNAL_API_URL'); // URL de la API externa
-        $this->apiKey = env('EXTERNAL_API_KEY'); // Clave API
+        $this->apiUrl = env('EXTERNAL_API_URL');
+        $this->apiKey = env('EXTERNAL_API_KEY');
     }
 
+    /**
+     * Construye la petición a la api externa de AI para traer el listado de usuarios.
+     *
+     * @return array
+     * @throws \Illuminate\Http\Client\ConnectionException
+     */
     public function fetchUsers()
     {
         $prompt = 'Generate a list of users with names and emails.';
 
+        // Solicitar a OpenAI
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $this->apiKey,
             'Content-Type' => 'application/json',
@@ -73,9 +83,17 @@ class DataFetcherService
         throw new \Exception('Error al obtener usuarios de la API externa. Estado: ' . $response->status());
     }
 
+    /**
+     *
+     *
+     * @return array
+     * @throws \Illuminate\Http\Client\ConnectionException
+     */
     public function fetchChallenges()
     {
         $prompt = 'Generate a list of challenges with titles, descriptions, and difficulty in number.';
+
+        // Solicitar a OpenAI
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $this->apiKey,
             'Content-Type' => 'application/json',
@@ -102,6 +120,10 @@ class DataFetcherService
         throw new \Exception('Error al obtener challenges de la API externa. Estado: ' . $response->status());
     }
 
+    /**
+     * @param $data
+     * @return array
+     */
     protected function parseChallenges($data)
     {
         $challenges = [];
@@ -124,6 +146,10 @@ class DataFetcherService
         return $challenges;
     }
 
+    /**
+     * @return string[]
+     * @throws \Illuminate\Http\Client\ConnectionException
+     */
     public function fetchVideos()
     {
         $prompt = 'Generate a list of videos with titles, URLs, descriptions, and assign them to a user with ID 6. Format the response as a JSON array with each object containing title, url, description, and user_id.';

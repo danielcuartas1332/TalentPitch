@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function index(Request $request)
     {
         $paginate = $request->input('paginate', 10); // Valor predeterminado es 10
@@ -17,11 +21,19 @@ class UserController extends Controller
         return response()->json($users);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function show($id)
     {
         return response()->json(User::findOrFail($id));
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -33,6 +45,11 @@ class UserController extends Controller
         return response()->json($user, 201);
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return mixed
+     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -45,6 +62,10 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function destroy($id)
     {
         User::findOrFail($id)->delete();

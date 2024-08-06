@@ -20,6 +20,9 @@ class LoadUsers extends Command
         $this->dataFetcherService = $dataFetcherService;
     }
 
+    /**
+     * @return void
+     */
     public function handle()
     {
         try {

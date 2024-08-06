@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function index(Request $request)
     {
         $paginate = $request->input('paginate', 10); // Valor predeterminado es 10
@@ -17,11 +21,19 @@ class VideoController extends Controller
         return response()->json($videos);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function show($id)
     {
         return response()->json(Video::findOrFail($id));
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -46,11 +58,20 @@ class VideoController extends Controller
         return response()->json($video, 201);
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return mixed
+     */
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'nullable|string|max:255',
-            'email' => 'nullable|string|email|max:255|unique:users,email,' . $id,
+            'url' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'user_id' => 'required|exists:users,id',
+            'videoable_type' => 'required|string',
+            'videoable_id' => 'required|integer'
         ]);
 
         $video = Video::findOrFail($id);
@@ -58,6 +79,10 @@ class VideoController extends Controller
         return response()->json($video);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function destroy($id)
     {
         Video::findOrFail($id)->delete();
