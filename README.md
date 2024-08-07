@@ -31,6 +31,15 @@ En la raiz del proyecto existe un archivo llamado **insomnia_api.json** el cual 
 
 php artisan test
 
+## .env.testing
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=testing_talentpitch
+DB_USERNAME=root
+DB_PASSWORD=root
+
 
 ## Heroku
 https://talentpitch-bdc75c6805c9.herokuapp.com/
