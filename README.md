@@ -12,6 +12,7 @@ php artisan migrate
 
 php artisan migrate --env=testing
 
+<img width="843" alt="image" src="https://github.com/user-attachments/assets/93edeb20-cd70-4adb-b88d-5669b8555dfa">
 
 
 ### Execute API GPT
