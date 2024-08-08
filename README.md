@@ -27,6 +27,14 @@ En la raiz del proyecto existe un archivo llamado **insomnia_api.json** el cual 
 
 <img width="254" alt="Captura de pantalla 2024-08-06 a la(s) 4 54 24 p  m" src="https://github.com/user-attachments/assets/5f7ec4bf-bd8c-4ee7-ba73-28a0b4791abc">
 
+### Commands API Externa
+
+*php artisan users:load
+
+*php artisan challenges:load
+
+*php artisan videos:load
+
 
 ### Execute tests
 
